@@ -14,7 +14,7 @@ export default function LandingPage() {
     <>
       <Hero />
       <Description />
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

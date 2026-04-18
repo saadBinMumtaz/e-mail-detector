@@ -208,243 +208,243 @@ function ParticleCanvas() {
 }
 
 // ─── HERO COMPONENT ───────────────────────────────────────────────
-export function Hero() {
-  const typed = useTypewriter([
-    "Your inbox has 47 unread emails.",
-    "We found 6 that actually matter.",
-    "Stop drowning. Start ranking.",
-    "Built for students. Tuned for SOFTEC.",
-  ], 55);
+// export function Hero() {
+//   const typed = useTypewriter([
+//     "Your inbox has 47 unread emails.",
+//     "We found 6 that actually matter.",
+//     "Stop drowning. Start ranking.",
+//     "Built for students. Tuned for SOFTEC.",
+//   ], 55);
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { const t = setTimeout(() => setMounted(true), 100); return () => clearTimeout(t); }, []);
+//   const [mounted, setMounted] = useState(false);
+//   useEffect(() => { const t = setTimeout(() => setMounted(true), 100); return () => clearTimeout(t); }, []);
 
-  const s = {
-    section: {
-      position: "relative", minHeight: "100vh", background: "#000",
-      display: "flex", flexDirection: "column", justifyContent: "center",
-      overflow: "hidden", padding: "0 6vw",
-    },
-    noise: {
-      position: "absolute", inset: 0, opacity: 0.025,
-      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-      backgroundSize: "200px 200px", pointerEvents: "none",
-    },
-    gridLines: {
-      position: "absolute", inset: 0, pointerEvents: "none",
-      backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
-      backgroundSize: "80px 80px",
-    },
-    topBar: {
-      position: "absolute", top: 0, left: 0, right: 0,
-      display: "flex", justifyContent: "space-between", alignItems: "center",
-      padding: "28px 6vw",
-      borderBottom: "1px solid rgba(255,255,255,0.07)",
-    },
-    logo: {
-      fontFamily: "var(--f-display)", fontWeight: 800, fontSize: 20,
-      letterSpacing: "-0.03em", color: "#fff", textDecoration: "none",
-    },
-    navRight: { display: "flex", gap: 40, alignItems: "center" },
-    navLink: {
-      fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: "0.12em",
-      color: "rgba(255,255,255,0.4)", textDecoration: "none", textTransform: "uppercase",
-      transition: "color 0.2s",
-    },
-    navCta: {
-      fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: "0.1em",
-      color: "#000", background: "#fff", padding: "10px 22px",
-      border: "none", cursor: "pointer", textTransform: "uppercase",
-    },
-    content: {
-      position: "relative", zIndex: 2, maxWidth: 1100,
-      paddingTop: 80,
-      opacity: mounted ? 1 : 0,
-      transform: mounted ? "none" : "translateY(30px)",
-      transition: "opacity 0.9s ease, transform 0.9s ease",
-    },
-    eyebrow: {
-      display: "inline-flex", alignItems: "center", gap: 10,
-      fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: "0.14em",
-      color: "rgba(255,255,255,0.5)", textTransform: "uppercase",
-      marginBottom: 32,
-    },
-    eyebrowLine: {
-      display: "inline-block", width: 32, height: 1, background: "rgba(255,255,255,0.3)",
-    },
-    h1: {
-      fontFamily: "var(--f-display)", fontWeight: 800,
-      fontSize: "clamp(52px, 8vw, 112px)",
-      lineHeight: 0.95, letterSpacing: "-0.04em",
-      color: "#fff", marginBottom: 0,
-    },
-    h1Serif: {
-      fontFamily: "var(--f-serif)", fontStyle: "italic",
-      fontWeight: 300, color: "rgba(255,255,255,0.7)",
-      display: "block", marginLeft: "0.04em",
-    },
-    typewriterRow: {
-      marginTop: 44, display: "flex", alignItems: "flex-start", gap: 20,
-      maxWidth: 700,
-    },
-    typewriterNum: {
-      fontFamily: "var(--f-mono)", fontSize: 11, color: "rgba(255,255,255,0.3)",
-      letterSpacing: "0.1em", paddingTop: 4, flexShrink: 0,
-    },
-    typewriterText: {
-      fontFamily: "var(--f-serif)", fontSize: "clamp(18px, 2.2vw, 26px)",
-      fontWeight: 300, color: "rgba(255,255,255,0.65)", lineHeight: 1.4,
-    },
-    cursor: {
-      display: "inline-block", width: 2, height: "0.9em",
-      background: "#fff", verticalAlign: "middle", marginLeft: 3,
-      animation: "blink 1s step-end infinite",
-    },
-    actions: { display: "flex", alignItems: "center", gap: 16, marginTop: 56 },
-    btnPrimary: {
-      fontFamily: "var(--f-display)", fontWeight: 600, fontSize: 14,
-      letterSpacing: "-0.01em", color: "#000", background: "#fff",
-      border: "none", padding: "16px 40px", cursor: "pointer",
-      transition: "transform 0.15s, background 0.15s",
-      position: "relative", overflow: "hidden",
-    },
-    btnSecondary: {
-      fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: "0.1em",
-      textTransform: "uppercase", color: "rgba(255,255,255,0.5)",
-      background: "transparent", border: "1px solid rgba(255,255,255,0.15)",
-      padding: "16px 32px", cursor: "pointer",
-      transition: "border-color 0.2s, color 0.2s",
-    },
-    scrollHint: {
-      position: "absolute", bottom: 36, left: "6vw",
-      display: "flex", alignItems: "center", gap: 12,
-      fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: "0.15em",
-      color: "rgba(255,255,255,0.25)", textTransform: "uppercase",
-      zIndex: 2,
-    },
-    scrollLine: {
-      width: 40, height: 1, background: "rgba(255,255,255,0.2)",
-      animation: "scrollPulse 2s ease-in-out infinite",
-    },
-    // right side floating cards
-    floatArea: {
-      position: "absolute", right: "6vw", top: "50%",
-      transform: "translateY(-50%)", zIndex: 2,
-      display: "flex", flexDirection: "column", gap: 12,
-    },
-  };
+//   const s = {
+//     section: {
+//       position: "relative", minHeight: "100vh", background: "#000",
+//       display: "flex", flexDirection: "column", justifyContent: "center",
+//       overflow: "hidden", padding: "0 6vw",
+//     },
+//     noise: {
+//       position: "absolute", inset: 0, opacity: 0.025,
+//       backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+//       backgroundSize: "200px 200px", pointerEvents: "none",
+//     },
+//     gridLines: {
+//       position: "absolute", inset: 0, pointerEvents: "none",
+//       backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+//         linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
+//       backgroundSize: "80px 80px",
+//     },
+//     topBar: {
+//       position: "absolute", top: 0, left: 0, right: 0,
+//       display: "flex", justifyContent: "space-between", alignItems: "center",
+//       padding: "28px 6vw",
+//       borderBottom: "1px solid rgba(255,255,255,0.07)",
+//     },
+//     logo: {
+//       fontFamily: "var(--f-display)", fontWeight: 800, fontSize: 20,
+//       letterSpacing: "-0.03em", color: "#fff", textDecoration: "none",
+//     },
+//     navRight: { display: "flex", gap: 40, alignItems: "center" },
+//     navLink: {
+//       fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: "0.12em",
+//       color: "rgba(255,255,255,0.4)", textDecoration: "none", textTransform: "uppercase",
+//       transition: "color 0.2s",
+//     },
+//     navCta: {
+//       fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: "0.1em",
+//       color: "#000", background: "#fff", padding: "10px 22px",
+//       border: "none", cursor: "pointer", textTransform: "uppercase",
+//     },
+//     content: {
+//       position: "relative", zIndex: 2, maxWidth: 1100,
+//       paddingTop: 80,
+//       opacity: mounted ? 1 : 0,
+//       transform: mounted ? "none" : "translateY(30px)",
+//       transition: "opacity 0.9s ease, transform 0.9s ease",
+//     },
+//     eyebrow: {
+//       display: "inline-flex", alignItems: "center", gap: 10,
+//       fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: "0.14em",
+//       color: "rgba(255,255,255,0.5)", textTransform: "uppercase",
+//       marginBottom: 32,
+//     },
+//     eyebrowLine: {
+//       display: "inline-block", width: 32, height: 1, background: "rgba(255,255,255,0.3)",
+//     },
+//     h1: {
+//       fontFamily: "var(--f-display)", fontWeight: 800,
+//       fontSize: "clamp(52px, 8vw, 112px)",
+//       lineHeight: 0.95, letterSpacing: "-0.04em",
+//       color: "#fff", marginBottom: 0,
+//     },
+//     h1Serif: {
+//       fontFamily: "var(--f-serif)", fontStyle: "italic",
+//       fontWeight: 300, color: "rgba(255,255,255,0.7)",
+//       display: "block", marginLeft: "0.04em",
+//     },
+//     typewriterRow: {
+//       marginTop: 44, display: "flex", alignItems: "flex-start", gap: 20,
+//       maxWidth: 700,
+//     },
+//     typewriterNum: {
+//       fontFamily: "var(--f-mono)", fontSize: 11, color: "rgba(255,255,255,0.3)",
+//       letterSpacing: "0.1em", paddingTop: 4, flexShrink: 0,
+//     },
+//     typewriterText: {
+//       fontFamily: "var(--f-serif)", fontSize: "clamp(18px, 2.2vw, 26px)",
+//       fontWeight: 300, color: "rgba(255,255,255,0.65)", lineHeight: 1.4,
+//     },
+//     cursor: {
+//       display: "inline-block", width: 2, height: "0.9em",
+//       background: "#fff", verticalAlign: "middle", marginLeft: 3,
+//       animation: "blink 1s step-end infinite",
+//     },
+//     actions: { display: "flex", alignItems: "center", gap: 16, marginTop: 56 },
+//     btnPrimary: {
+//       fontFamily: "var(--f-display)", fontWeight: 600, fontSize: 14,
+//       letterSpacing: "-0.01em", color: "#000", background: "#fff",
+//       border: "none", padding: "16px 40px", cursor: "pointer",
+//       transition: "transform 0.15s, background 0.15s",
+//       position: "relative", overflow: "hidden",
+//     },
+//     btnSecondary: {
+//       fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: "0.1em",
+//       textTransform: "uppercase", color: "rgba(255,255,255,0.5)",
+//       background: "transparent", border: "1px solid rgba(255,255,255,0.15)",
+//       padding: "16px 32px", cursor: "pointer",
+//       transition: "border-color 0.2s, color 0.2s",
+//     },
+//     scrollHint: {
+//       position: "absolute", bottom: 36, left: "6vw",
+//       display: "flex", alignItems: "center", gap: 12,
+//       fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: "0.15em",
+//       color: "rgba(255,255,255,0.25)", textTransform: "uppercase",
+//       zIndex: 2,
+//     },
+//     scrollLine: {
+//       width: 40, height: 1, background: "rgba(255,255,255,0.2)",
+//       animation: "scrollPulse 2s ease-in-out infinite",
+//     },
+//     // right side floating cards
+//     floatArea: {
+//       position: "absolute", right: "6vw", top: "50%",
+//       transform: "translateY(-50%)", zIndex: 2,
+//       display: "flex", flexDirection: "column", gap: 12,
+//     },
+//   };
 
-  const emailPreviews = [
-    { rank: "01", priority: "CRITICAL", sender: "LUMS Career Services", subject: "Google Summer Internship — Deadline in 3 days", score: 94 },
-    { rank: "02", priority: "HIGH", sender: "MIT EECS Dept.", subject: "Shortlisted: Research Fellowship 2025", score: 81 },
-    { rank: "03", priority: "HIGH", sender: "NUST Innovation Hub", subject: "Startup Grant Applications Open", score: 76 },
-  ];
+//   const emailPreviews = [
+//     { rank: "01", priority: "CRITICAL", sender: "LUMS Career Services", subject: "Google Summer Internship — Deadline in 3 days", score: 94 },
+//     { rank: "02", priority: "HIGH", sender: "MIT EECS Dept.", subject: "Shortlisted: Research Fellowship 2025", score: 81 },
+//     { rank: "03", priority: "HIGH", sender: "NUST Innovation Hub", subject: "Startup Grant Applications Open", score: 76 },
+//   ];
 
-  return (
-    <section style={s.section}>
-      <style>{`
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-        @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:0.7} }
-        @keyframes cardIn { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:none} }
-        .hero-card { animation: cardIn 0.7s ease both; }
-        .hero-card:hover { border-color: rgba(255,255,255,0.25) !important; transform: translateX(-4px); }
-        .btn-primary:hover { background: #e8e8e3 !important; transform: translateY(-2px) !important; }
-        .btn-secondary:hover { border-color: rgba(255,255,255,0.4) !important; color: rgba(255,255,255,0.9) !important; }
-        .nav-link:hover { color: #fff !important; }
-      `}</style>
+//   return (
+//     <section style={s.section}>
+//       <style>{`
+//         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+//         @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:0.7} }
+//         @keyframes cardIn { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:none} }
+//         .hero-card { animation: cardIn 0.7s ease both; }
+//         .hero-card:hover { border-color: rgba(255,255,255,0.25) !important; transform: translateX(-4px); }
+//         .btn-primary:hover { background: #e8e8e3 !important; transform: translateY(-2px) !important; }
+//         .btn-secondary:hover { border-color: rgba(255,255,255,0.4) !important; color: rgba(255,255,255,0.9) !important; }
+//         .nav-link:hover { color: #fff !important; }
+//       `}</style>
 
-      <div style={s.noise} />
-      <div style={s.gridLines} />
-      <ParticleCanvas />
+//       <div style={s.noise} />
+//       <div style={s.gridLines} />
+//       <ParticleCanvas />
 
-      {/* NAV */}
-      <div style={s.topBar}>
-        <span style={s.logo}>Inbox<span style={{ fontFamily: "var(--f-serif)", fontStyle: "italic", fontWeight: 300 }}>IQ</span></span>
-        <div style={s.navRight}>
-          <a href="#features" style={s.navLink} className="nav-link">Features</a>
-          <a href="#how" style={s.navLink} className="nav-link">How it works</a>
-          <a href="#demo" style={s.navLink} className="nav-link">Demo</a>
-          <button style={s.navCta}>Launch App →</button>
-        </div>
-      </div>
+//       {/* NAV */}
+//       <div style={s.topBar}>
+//         <span style={s.logo}>Inbox<span style={{ fontFamily: "var(--f-serif)", fontStyle: "italic", fontWeight: 300 }}>IQ</span></span>
+//         <div style={s.navRight}>
+//           {/* <a href="#features" style={s.navLink} className="nav-link">Features</a> */}
+//           {/* <a href="#how" style={s.navLink} className="nav-link">How it works</a> */}
+//           {/* <a href="#demo" style={s.navLink} className="nav-link">Demo</a> */}
+//           <button style={s.navCta}>Launch App →</button>
+//         </div>
+//       </div>
 
-      {/* CONTENT */}
-      <div style={s.content}>
-        <div style={s.eyebrow}>
-          <span style={s.eyebrowLine} />
-          AI-Powered Email Intelligence
-          <span style={s.eyebrowLine} />
-        </div>
+//       {/* CONTENT */}
+//       <div style={s.content}>
+//         <div style={s.eyebrow}>
+//           <span style={s.eyebrowLine} />
+//           AI-Powered Email Intelligence
+//           <span style={s.eyebrowLine} />
+//         </div>
 
-        <h1 style={s.h1}>
-          Stop reading.
-          <span style={s.h1Serif}>Start ranking.</span>
-        </h1>
+//         <h1 style={s.h1}>
+//           Stop reading.
+//           <span style={s.h1Serif}>Start ranking.</span>
+//         </h1>
 
-        <div style={s.typewriterRow}>
-          <span style={s.typewriterNum}>— 01</span>
-          <span style={s.typewriterText}>
-            {typed}<span style={s.cursor} />
-          </span>
-        </div>
+//         <div style={s.typewriterRow}>
+//           <span style={s.typewriterNum}>— 01</span>
+//           <span style={s.typewriterText}>
+//             {typed}<span style={s.cursor} />
+//           </span>
+//         </div>
 
-        <div style={s.actions}>
-          <button style={s.btnPrimary} className="btn-primary">Analyze My Inbox</button>
-          <button style={s.btnSecondary} className="btn-secondary">Watch Demo</button>
-        </div>
-      </div>
+//         <div style={s.actions}>
+//           <button style={s.btnPrimary} className="btn-primary">Analyze My Inbox</button>
+//           {/* <button style={s.btnSecondary} className="btn-secondary">Watch Demo</button> */}
+//         </div>
+//       </div>
 
-      {/* FLOATING CARDS */}
-      <div style={s.floatArea}>
-        {emailPreviews.map((e, i) => (
-          <div
-            key={i}
-            className="hero-card"
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.09)",
-              backdropFilter: "blur(20px)",
-              padding: "14px 18px",
-              width: 320,
-              transition: "border-color 0.2s, transform 0.2s",
-              animationDelay: `${0.5 + i * 0.2}s`,
-            }}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-              <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>
-                #{e.rank}
-              </span>
-              <span style={{
-                fontFamily: "var(--f-mono)", fontSize: 9, letterSpacing: "0.12em",
-                padding: "2px 8px",
-                background: e.priority === "CRITICAL" ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.06)",
-                color: e.priority === "CRITICAL" ? "#fff" : "rgba(255,255,255,0.5)",
-                border: `1px solid ${e.priority === "CRITICAL" ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)"}`,
-              }}>
-                {e.priority}
-              </span>
-            </div>
-            <div style={{ fontFamily: "var(--f-display)", fontWeight: 600, fontSize: 13, color: "#fff", marginBottom: 3 }}>{e.sender}</div>
-            <div style={{ fontFamily: "var(--f-serif)", fontSize: 13, color: "rgba(255,255,255,0.5)", fontStyle: "italic" }}>{e.subject}</div>
-            <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.08)" }}>
-                <div style={{ width: `${e.score}%`, height: "100%", background: "#fff", opacity: 0.5 }} />
-              </div>
-              <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{e.score}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+//       {/* FLOATING CARDS */}
+//       <div style={s.floatArea}>
+//         {emailPreviews.map((e, i) => (
+//           <div
+//             key={i}
+//             className="hero-card"
+//             style={{
+//               background: "rgba(255,255,255,0.03)",
+//               border: "1px solid rgba(255,255,255,0.09)",
+//               backdropFilter: "blur(20px)",
+//               padding: "14px 18px",
+//               width: 320,
+//               transition: "border-color 0.2s, transform 0.2s",
+//               animationDelay: `${0.5 + i * 0.2}s`,
+//             }}
+//           >
+//             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+//               <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}>
+//                 #{e.rank}
+//               </span>
+//               <span style={{
+//                 fontFamily: "var(--f-mono)", fontSize: 9, letterSpacing: "0.12em",
+//                 padding: "2px 8px",
+//                 background: e.priority === "CRITICAL" ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.06)",
+//                 color: e.priority === "CRITICAL" ? "#fff" : "rgba(255,255,255,0.5)",
+//                 border: `1px solid ${e.priority === "CRITICAL" ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)"}`,
+//               }}>
+//                 {e.priority}
+//               </span>
+//             </div>
+//             <div style={{ fontFamily: "var(--f-display)", fontWeight: 600, fontSize: 13, color: "#fff", marginBottom: 3 }}>{e.sender}</div>
+//             <div style={{ fontFamily: "var(--f-serif)", fontSize: 13, color: "rgba(255,255,255,0.5)", fontStyle: "italic" }}>{e.subject}</div>
+//             <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 8 }}>
+//               <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.08)" }}>
+//                 <div style={{ width: `${e.score}%`, height: "100%", background: "#fff", opacity: 0.5 }} />
+//               </div>
+//               <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{e.score}</span>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
 
-      {/* SCROLL HINT */}
-      <div style={s.scrollHint}>
-        <span style={s.scrollLine} />
-        Scroll to explore
-      </div>
-    </section>
-  );
-}
+//       {/* SCROLL HINT */}
+//       <div style={s.scrollHint}>
+//         <span style={s.scrollLine} />
+//         Scroll to explore
+//       </div>
+//     </section>
+//   );
+// }
 
 // ─── DESCRIPTION COMPONENT ───────────────────────────────────────
 function StatItem({ target, suffix = "", label, triggerCount }) {
@@ -828,7 +828,7 @@ export default function Homepage() {
   return (
     <>
       <FontInjector />
-      <Hero />
+      {/* <Hero /> */}
       <Description />
       <Footer />
     </>
