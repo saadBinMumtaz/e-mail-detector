@@ -2,6 +2,7 @@
 //  ResultsList.jsx  (enhanced)
 //  Animated results with monochromatic loading state.
 // ──────────────────────────────────────────────────────
+import ExportPDF from '../components/Exportpdf.jsx'
 
 import { motion, AnimatePresence } from 'framer-motion'
 import OpportunityCard from './OpportunityCard.jsx'
@@ -94,7 +95,9 @@ export default function ResultsList({ status, results, errorMessage }) {
                 </span>
               )}
             </motion.div>
+
 <VoiceBriefing results={results} />
+<ExportPDF results={results} />
             {/* Cards */}
             <div>
               {opportunities.map((opp, i) => (
