@@ -2,34 +2,34 @@
 //  EmailInput.jsx  (enhanced)
 //  Monochromatic textarea with character count + glow.
 // ──────────────────────────────────────────────────────
- 
+
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
- 
+
 const PLACEHOLDER_TEXT = `Subject: LUMS Scholarship 2026 – Applications Open
 Dear Student, We are pleased to announce that applications are now open for the LUMS National Outreach Programme. Eligible students with CGPA above 3.0 may apply before March 31, 2026. Visit lums.edu.pk/nop for details.
- 
+
 ---
- 
+
 Subject: Flash Sale This Weekend!
 Get 50% off electronics at our mega store. Limited time offer.
- 
+
 ---
- 
+
 Subject: Google Summer Internship 2026
 We are looking for talented undergraduate students for our 3-month summer internship program. Apply at careers.google.com by April 15, 2026.`
- 
+
 export default function EmailInput({ value, onChange }) {
   const [focused, setFocused] = useState(false)
- 
+
   const emailCount = value
-    .split(/\n---\n|\n\n/)
+    .split(/\n?---\n?/)
     .map(s => s.trim())
     .filter(s => s.length > 0).length
- 
+
   return (
     <div style={styles.wrapper}>
- 
+
       {/* Header row */}
       <div style={styles.headerRow}>
         <span style={styles.hint}>
@@ -49,7 +49,7 @@ export default function EmailInput({ value, onChange }) {
           )}
         </AnimatePresence>
       </div>
- 
+
       {/* Textarea */}
       <motion.div
         style={{
@@ -69,7 +69,7 @@ export default function EmailInput({ value, onChange }) {
           onBlur={() => setFocused(false)}
           spellCheck={false}
         />
- 
+
         {/* Bottom bar */}
         <div style={styles.bottomBar}>
           <span style={styles.bottomHint}>
@@ -91,11 +91,11 @@ export default function EmailInput({ value, onChange }) {
           )}
         </div>
       </motion.div>
- 
+
     </div>
   )
 }
- 
+
 const styles = {
   wrapper: {
     display: 'flex',
