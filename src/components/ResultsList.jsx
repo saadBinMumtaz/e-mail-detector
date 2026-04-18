@@ -5,6 +5,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import OpportunityCard from './OpportunityCard.jsx'
+import VoiceBriefing from '../pages/VoiceBreifing.jsx'
+
 
 export default function ResultsList({ status, results, errorMessage }) {
 
@@ -92,7 +94,7 @@ export default function ResultsList({ status, results, errorMessage }) {
                 </span>
               )}
             </motion.div>
-
+<VoiceBriefing results={results} />
             {/* Cards */}
             <div>
               {opportunities.map((opp, i) => (

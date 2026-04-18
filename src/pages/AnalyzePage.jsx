@@ -1,7 +1,6 @@
 // ──────────────────────────────────────────────────────
 //  pages/AnalyzePage.jsx  (enhanced with Framer Motion)
 // ──────────────────────────────────────────────────────
-
 import { useState }       from 'react'
 import { useNavigate }    from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
