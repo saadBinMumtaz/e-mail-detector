@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap'); */
+
 /* ── Reset & Base ── */
 * {
   box-sizing: border-box;
@@ -15,7 +17,6 @@ body {
 
 /* ── Layout ── */
 .container {
-  max-width: 780px;
   margin: 0 auto;
   padding: 32px 20px;
 }
@@ -254,7 +255,7 @@ textarea {
 .loading-box {
   text-align: center;
   padding: 40px;
-  color: #888;
+  color: #cecccc;
   font-size: 14px;
 }
 
@@ -288,13 +289,13 @@ textarea {
   text-align: center;
   padding: 40px;
   font-size: 14px;
-  color: #888;
+  color: #c5c5c5;
 }
 
 /* ── Score chip ── */
 .score-chip {
   font-size: 12px;
-  color: #999;
+  color: #cfcdcd;
   margin-top: 4px;
 }
 
@@ -303,4 +304,78 @@ textarea {
   border: none;
   border-top: 1px solid #f0f0f0;
   margin: 12px 0;
+}
+/* ──────────────────────────────────────────────────────
+   global.css  —  InboxIQ monochromatic theme
+   Import this in your main.jsx or index.html
+   ────────────────────────────────────────────────────── */
+
+/* Google Fonts */
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track  { background: #000; }
+::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.15); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+/* ── Input placeholders ── */
+::placeholder {
+  color: rgba(255, 255, 255, 0.878);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+}
+
+/* ── Focus rings ── */
+:focus-visible {
+  outline: 1px solid rgba(210, 207, 207, 0.462);
+  outline-offset: 2px;
+}
+
+/* ── Textarea resize handle ── */
+textarea {
+  resize: vertical;
+}
+
+/* ── Utility: visually-hidden ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }
